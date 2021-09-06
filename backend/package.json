@@ -1,0 +1,15 @@
+{
+  "name": "inotebook",
+  "version": "1.0.0",
+  "description": "this is made by using mern stack. inotebook is a notes taking websiteand this is its backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "veer",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.5"
+  }
+}
