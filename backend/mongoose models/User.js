@@ -23,5 +23,5 @@ const UserSchema = new Schema({
 });
 
 const User =  mongoose.model("user",UserSchema);
-User.createIndexes(); // for getting unique values in defined variable like email in which we defiend that email must be unique
+// User.createIndexes(); 
 module.exports = User;
