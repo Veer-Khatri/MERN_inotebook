@@ -2,6 +2,11 @@ const express = require("express");
 const User = require("../mongoose models/User");
 const router = express.Router()
 const { body, validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken');
+
+const JWT_Secret = "VeerKhatriSignToken"
+
 
 // Creating a user using: POST method and path is "/api/auth/createuser". Doen't require authentication
 router.post("/createuser", [
@@ -22,12 +27,21 @@ router.post("/createuser", [
         if (user) {
             return responsee.status(400).json({ error: "sorry user with this email already exits" })
         }
+        const salt = await bcrypt.genSalt(10);
+        let SecurePassword = await bcrypt.hash(requestt.body.password,salt)
+        let SecondSecurePassword = await bcrypt.hash(SecurePassword,salt)
         user = await User.create({
             name: requestt.body.name,
             email: requestt.body.email,
-            password: requestt.body.password
+            password: SecondSecurePassword
         })
-        responsee.json(user)
+        const data = {
+            user:{
+                id:user.id
+            }
+        }
+        const authToken = jwt.sign(data,JWT_Secret)
+        responsee.json({authToken})
         // .then(user => responsee.json(user))
         // .catch(err=> {console.log(err);
         // responsee.json({"error":"This email is registered please enter a unique email"})})
@@ -35,6 +49,6 @@ router.post("/createuser", [
         console.error(error.message);
         responsee.status(500).send("some error occured please try after some time")
     }
-})
+}) 
 
 module.exports = router
