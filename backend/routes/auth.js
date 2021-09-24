@@ -8,7 +8,7 @@ var jwt = require('jsonwebtoken');
 const JWT_Secret = "VeerKhatriSignToken"
 
 
-// Creating a user using: POST method and path is "/api/auth/createuser". Doen't require authentication
+// Creating a user using: POST method and path is "/api/auth/createuser". Don't require authentication means no login required
 router.post("/createuser", [
     body('name', "enter a valid name").isLength({ min: 3 }),
     body('email', "enter a valid email").isEmail(),
