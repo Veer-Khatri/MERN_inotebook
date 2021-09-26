@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const NoteSchema = new Schema({
+    user:{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "user" // ref means reference
+    },
     title:{
         type:String,
         required:true
@@ -10,12 +14,12 @@ const NoteSchema = new Schema({
         type:String,
         required:true
     },
-    date:{
+    tag:{
         type:String,
         default:"General"
         
     },
-    tag:{
+    date:{
         type:Date,
         default:Date.now
     },

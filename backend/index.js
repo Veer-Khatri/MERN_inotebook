@@ -7,7 +7,7 @@ const port = 5000
 
 // available routes
 
-app.use(express.json())// this is a middleware if we want to use requestt.body
+app.use(express.json())// this is a middleware if we want to use requestt.body 
 
 
 app.use("/api/auth", require("./routes/auth") )
