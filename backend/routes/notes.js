@@ -1,8 +1,8 @@
 const express = require("express")
 const router = express.Router()
 
-router.get("/", (requestt,responsee)=>{
-    
+// Get all the notes using: GET ""
+router.get("/fetchnotes", (requestt,responsee)=>{
     responsee.json([])
 })
 
