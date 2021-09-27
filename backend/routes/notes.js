@@ -74,7 +74,6 @@ router.put("/updatenote/:id", fetchuser, [
         }
         // find the note to be updated
         let note = await Notes.findById(requestt.params.id);// gave id in api so we can have the id of note 
-        console.log(newNote);
         if (!note) {
             //if note not present
             return responsee.status(404).send("note not found")
@@ -89,6 +88,30 @@ router.put("/updatenote/:id", fetchuser, [
         note = await Notes.findByIdAndUpdate(requestt.params.id, { $set: newNote }, { new: true })
         responsee.json({ note });
     } catch (error) {
+        console.error(error.message);
+        responsee.status(500).send("internal server error")
+    }
+})
+// Route 4 - deleting an existing note using: DELETE "/api/notes/deletenote" login required
+
+router.delete("/deletenote/:id",fetchuser, async (requestt, responsee) => {
+    try{
+        // find the note to be deleted
+        let note = await Notes.findById(requestt.params.id);// gave id in api so we can have the id of note 
+        if (!note) {
+            //if note not present
+            return responsee.status(404).send("note not found")
+        }
+
+        // checking the user to be the same
+        if (note.user.toString() !== requestt.user.id) {
+            return responsee.status(401).send("Want to work for me Hacker?")
+
+        }
+        // checked note is there or not and user is authorised to do it or not For Stopping hackers
+        note = await Notes.findByIdAndDelete(requestt.params.id)
+        responsee.send("Note deleted successfully")
+    }catch (error) {
         console.error(error.message);
         responsee.status(500).send("internal server error")
     }
