@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+*{
+
+    list-style: none;
+    text-decoration: none;
+}
+
+#nav{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#Logo_Name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center  ;
+}
+
+#Logo_Name img{
+    width: 60px;
+    height: 55px;
+}
+#Logo_Name p{
+    font-size: 26px;
+    margin:  0 20px;
+    font-weight: bold;
+    font-family: 'Dancing Script', cursive;
+}
+#navLinks{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 22px;
+}
+#navLinks .links{
+    margin: 0 25px;
+    color: black;
+    font-family: cursive;
+}
+#searchBox #searchInp , #searchBox #searchBtn{ 
+    font-size: 22px;
+    outline: none;
+    border: none;
+    background: none;
+}
+#searchBox{
+    border-radius: 4px;
+    padding: 2px;
+    border: 3px solid black;
+}
+
+#searchBox #searchBtn{
+    border-radius: 8px;
+    border: 3.5px solid purple;
+}
