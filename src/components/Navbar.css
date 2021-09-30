@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
 *{
-
+    margin: 0;
+    padding : 0;
     list-style: none;
     text-decoration: none;
 }
@@ -37,10 +38,24 @@
     font-size: 22px;
 }
 #navLinks .links{
-    margin: 0 25px;
+    box-sizing: border-box;
+    margin: 4px 25px;
     color: black;
     font-family: cursive;
+    padding: 4px;
+    border-radius:5px ;
 }
+
+#navLinks .links:hover{
+    padding-bottom:0 ;
+    transition-duration: 200ms;
+    border-bottom: 4px solid black;
+    
+}
+/* #navLinks .links{
+    color: greenyellow;
+} */
+
 #searchBox #searchInp , #searchBox #searchBtn{ 
     font-size: 22px;
     outline: none;

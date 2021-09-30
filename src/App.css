@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Merienda:wght@700&display=swap');
+html{
+  overflow-x: hidden;
+}
+/* home.js css */
+*{
+  font-family: monospace ;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  text-align: left;
+  align-items: center;
+  width: 100vw;
+  margin: 20px 0;
+}
+#textarea , .summaryPara{
+  width: 80vw;
+  font-size:20px ;
+  letter-spacing: 2px;
+  margin-bottom: 20px ;
+}
+.form h1{
+  font-family: 'Akaya Kanadaka';
+  margin: 15px;
+  width: 80vw;
+  text-align: left; 
+}
+.btn_container {
+  width: 80vw;
+  display: flex;
+  justify-content: space-around; 
+  text-align: center;
+  align-items: left;
+}
+.btn{
+  background-color: #FF5200;
+  color: white;
+  padding: 8px;
+  font-size: 18px;
+  font-family: 'Merienda', cursive;
+  font-weight: bolder;
+  border: 4px groove #e44901;
+  border-radius: 4px;
+  
+  
+  
+}
