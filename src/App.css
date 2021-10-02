@@ -4,7 +4,7 @@
 html{
   overflow-x: hidden;
 }
-
+/* Home.js */
 .form{
   display: flex;
   flex-direction: column;
@@ -59,12 +59,18 @@ html{
   text-align: center; 
 
 }
+
+
+/* UserNotes.js */
 .notesCollection{
   font-size: 22px;
   width: 100vw;
   text-align: center; 
   
 }
+
+
+/* NoteItem.js */
 .parentNoteDiv{
   border: 2px solid black;
   padding: 4px;
@@ -85,4 +91,18 @@ html{
 .parentNoteDiv p{
   padding: 4px;
   font-family: "Merienda";
+}
+.icons button{
+  background: none;
+  outline: none;
+  margin: 3px;
+  padding: 3px;
+  border: none;
+  cursor: pointer;
+  
+}
+.icons button i{
+  margin: 2px 5px 5px 15px;
+  font-size: 20px;
+  padding: 2px 2px 2px 2px;
 }

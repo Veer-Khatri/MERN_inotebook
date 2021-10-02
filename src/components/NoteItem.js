@@ -11,8 +11,11 @@ const NoteItem = (props) => {
             <h4>Description ----</h4>
             <p className="noteDescription">
                 {note.description}
-
             </p>
+            <div className="icons">
+                <button><i className="fas fa-edit "></i></button>
+                <button><i className="fas fa-trash-alt"></i></button>
+            </div>
         </div>
     )
 }

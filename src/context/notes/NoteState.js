@@ -6,7 +6,7 @@ import NoteContext from "./NoteContext"; // this is from our note context file
 const NoteState = (props) => {
     const initialNotes = [
         {
-            "_id": "615017adad0a970cedc73b5d",
+            "_id": "615017adad0a970cedc73b5d1",
             "user": "614ed72f34d4927aa89980c8",
             "title": "my note",
             "description": "hello this is my note",
