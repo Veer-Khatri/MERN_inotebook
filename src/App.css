@@ -4,7 +4,7 @@
 html{
   overflow-x: hidden;
 }
-/* Home.js */
+/* AddNote.js */
 .form{
   display: flex;
   flex-direction: column;
@@ -15,12 +15,13 @@ html{
   margin: 20px 0;
 }
 
-#note , .form input {
+#description , .form input {
   width: 80vw;
   font-size:22px ;
   padding: 5px;
   letter-spacing: 2px;
-  margin-bottom: 20px ;
+  margin: 10px ;
+
 }
 .form h2{
   font-family: 'Akaya Kanadaka';
@@ -36,6 +37,7 @@ html{
   align-items: left;
 }
 .btn{
+  margin-top: 20px;
   background-color: #FF5200;
   color: white;
   padding: 8px;
@@ -46,6 +48,8 @@ html{
   border-radius: 4px;
 
 }
+
+/* HOME.JS */
 .notesPara{
   display: flex;
   flex-direction: column;

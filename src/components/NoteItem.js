@@ -3,6 +3,7 @@ import React from 'react'
 const NoteItem = (props) => {
     const { note } = props;
     return (
+        <>
         <div className="parentNoteDiv">
             <h4>Title ---</h4>
             <p className="noteTitle">
@@ -17,6 +18,7 @@ const NoteItem = (props) => {
                 <button><i className="fas fa-trash-alt"></i></button>
             </div>
         </div>
+        </>
     )
 }
 
