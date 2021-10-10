@@ -1,17 +1,20 @@
 import React, { useContext, useState } from 'react'
 import NoteContext from '../context/notes/NoteContext';
 
-const AddNote = () => {
+const AddingNote = () => {
 
     const context = useContext(NoteContext)
     const { AddNote } = context;
-    const [note, setnote] = useState({ title: "", descritpion: "", tag: "" })
+    const [note, setnote] = useState({ title: "", description: "", tag: "" })
     const onChange = (eventObj) => {
         setnote({ ...note, [eventObj.target.name]: eventObj.target.value })
     }
     const HandelClick = (eventObj) => {
         eventObj.preventDefault();
-        AddNote(note.title, note.descritpion, note.tag)
+        AddNote(note.title, note.description, note.tag)
+        document.getElementById("title").value = ""
+        document.getElementById("description").value = ""
+        document.getElementById("tag").value = ""
     }
     return (
         <form action="POST" className="form">
@@ -30,4 +33,4 @@ const AddNote = () => {
     )
 }
 
-export default AddNote
+export default AddingNote

@@ -80,7 +80,7 @@ html{
   padding: 4px;
   margin: 14px;
   display: inline-block;
-  width: 30vw;
+  /* width: 30vw; */
   font-size: 20px;
   text-align: left;
   border-radius: 10px;
@@ -109,4 +109,46 @@ html{
   margin: 2px 5px 5px 15px;
   font-size: 20px;
   padding: 2px 2px 2px 2px;
+}
+/* updationForm */
+.updationForm{
+  transition:  300ms;
+  display: none;
+  position:fixed;
+  left: 30vw;
+  text-align: left;
+  width: 40vw;
+  top: 10px;
+  background: rgb(173, 250, 255);
+  margin: 10px;
+  border-radius: 10px;
+  
+  
+  
+}
+.updationForm textarea , .updationForm input  {
+  width: 30vw;
+  background: none;
+  outline: none;
+  border:none;
+  border: 6px solid white;
+}
+
+.updationForm h3{
+  margin: 15px;
+  width: 30vw;
+  text-align: left;
+  font-family: 'Akaya Kanadaka';
+
+}
+
+#CancelNoteBtn{
+  border-color: rgb(122, 2, 2);
+  background-color: rgb(252, 76, 76);
+}
+#updateNoteBtn{
+  margin: 10px;
+  background: rgb(77, 158, 252);
+  border-color: rgb(0, 17, 255);
+  border-style: solid;
 }

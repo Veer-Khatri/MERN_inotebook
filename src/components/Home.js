@@ -1,5 +1,5 @@
 import React from "react"
-import AddNote from "./AddNote";
+import AddNote from "./AddingNote";
 
 import UserNotes from './UserNotes';
 function Home() {
