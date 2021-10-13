@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router'
 
-const Signup = () => {
+const Signup = (props) => {
     const [creditionals, setcreditionals] = useState({ Firstname: "", Lastname: "", email: "", Setpassword: "", Confirmpassword: "" })
     const onChange = (eventObj) => {
         setcreditionals({ ...creditionals, [eventObj.target.name]: eventObj.target.value })
@@ -26,14 +26,15 @@ const Signup = () => {
                 // Save the auth tokenand redirect
                 localStorage.setItem("token", json.authtoken) // saving token in local storage 
                 history.push('/')
+                props.showAlert("Successfully signed up","Success")
             }
             else {
-                alert("invalid creditionals")
+                props.showAlert("please enter same passwords in 'password' and 'confirm-password' fields","Creditional error")
             }
         }
         else {
             console.log(fullName, creditionals.email, creditionals.Setpassword);
-            alert("please enter same passwords in 'password' and 'confirm-password' fields")
+            props.showAlert("please enter same passwords in 'password' and 'confirm-password' fields","Creditional Filling error")
         }
     }
 

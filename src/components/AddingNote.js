@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import NoteContext from '../context/notes/NoteContext';
 
-const AddingNote = () => {
+const AddingNote = (props) => {
     setTimeout(() => {
         if (document.getElementById("addNoteBtn").disabled === true) {
             document.getElementById("tooltip").style.display = "block"
@@ -26,6 +26,7 @@ const AddingNote = () => {
         document.getElementById("description").value = ""
         document.getElementById("tag").value = ""
         setnote({ title: "", description: "", tag: "" })
+        props.showAlert("Note added successfully","success")
     }
 
     return (

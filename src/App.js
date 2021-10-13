@@ -26,6 +26,7 @@ function App() {
     
     setTimeout(() => {
       setAlert(false)
+      
     }, 2500);
   }
   return (
@@ -38,8 +39,8 @@ function App() {
             <Switch>
               <Route exact path="/"><Home showAlert={showAlert}/></Route>
               <Route exact path="/about"><About /></Route>
-              <Route exact path="/login"><Login /></Route>
-              <Route exact path="/signup"><Signup /></Route>
+              <Route exact path="/login"><Login showAlert={showAlert} /></Route>
+              <Route exact path="/signup"><Signup  showAlert={showAlert} /></Route>
             </Switch>
           </div>
         </Router>

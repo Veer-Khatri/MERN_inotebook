@@ -4,7 +4,7 @@ import NoteItem from './NoteItem';
 
 
 
-function UserNotes() {
+function UserNotes(props) {
     const context = useContext(NoteContext)
     const { notes, GetNotes, EditNote } = context;
     const [note, setnote] = useState({ id:"", Etitle: "", Edescription: "", Etag: "" })
@@ -18,7 +18,7 @@ function UserNotes() {
         let updationForm = document.getElementById("updationForm");
         updationForm.style.display = "none"
         EditNote(note.id, note.Etitle, note.Edescription, note.Etag);
-
+        props.showAlert("Note edited successfully",'success')
         eventObj.preventDefault();
  
         
@@ -29,7 +29,7 @@ function UserNotes() {
         // eslint-disable-next-line
     }, [])
 
-    const updateNote = (CurrentNote) => {
+    const updateNoteBox = (CurrentNote) => {
         setnote({id:CurrentNote._id,Etitle:CurrentNote.title, Edescription:CurrentNote.description , Etag:CurrentNote.tag})
         let updationForm = document.getElementById("updationForm");
         if (updationForm.style.display === "none") {
@@ -54,7 +54,7 @@ function UserNotes() {
                     <input type="text" id="Etag" name="Etag" value={note.Etag} placeholder="Enter Tag" onChange={onChange} />
                     <div className="btncontainer">
                         <button id="updateNoteBtn" type="button" onClick={HandelClick} className="btn">Update Note</button>
-                        <button id="CancelNoteBtn" type="button" onClick={updateNote} className="btn">Cancel Update</button>
+                        <button id="CancelNoteBtn" type="button" onClick={updateNoteBox} className="btn">Cancel</button>
                     </div>
                 </form>
 
@@ -63,7 +63,7 @@ function UserNotes() {
             <div className="notesCollection">
                 {notes.length === 0 && "No notes to display"}
                 {notes.map((note) => { //Map is a collection of elements where each element is stored as a Key, value pair
-                    return <NoteItem key={note._id} updateNote={updateNote} note={note} />
+                    return <NoteItem key={note._id} updateNote={updateNoteBox} note={note} />
                 })}
             </div>
         </>

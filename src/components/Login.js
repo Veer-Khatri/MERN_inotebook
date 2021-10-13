@@ -2,7 +2,7 @@ import React ,{useState}from 'react'
 import { useHistory } from 'react-router'
 
 
-const Login = () => {
+const Login = (props) => {
     
     const [creditionals, setcreditionals] = useState({email:"",password:""})
     const onChange = (eventObj) => {
@@ -26,10 +26,12 @@ const Login = () => {
         if(json.success){
             // Save the auth tokenand redirect
             localStorage.setItem("token",json.authtoken) // saving token in local storage 
+            props.showAlert("Logedin Successfully ","Success")
             history.push('/')
+
         }
         else{
-            alert("invalid creditionals")
+            props.showAlert("Login failed. Please enter correct Creditionals ","Failed")
         }
     
     }
