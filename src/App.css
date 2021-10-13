@@ -4,6 +4,84 @@
 html{
   overflow-x: hidden;
 }
+button{
+  cursor: pointer;
+}
+
+/* Signup.js css */
+#SignupForm{
+  background-image:url("assets/FORsiginup.jpg") ;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top:0 ;
+  text-align: center;
+  overflow-x: hidden;
+  overflow-y:hidden ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover ;
+  opacity: .89;
+}
+#SignupForm div {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+#SignupForm div input{
+  width: 40vw;
+}
+#SignupForm #email{
+  width: 82vw;
+
+}
+
+/* Login.js css */
+#LoginForm{
+  background-image:url("assets/bgForLogin.jpg") ;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y:hidden ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover ;
+  margin-top:0 ;
+  opacity: .89; 
+}
+
+.loginInput{
+  
+  outline: none;
+  font-size: 24px;
+  border: none ;
+  border-bottom: 4px solid black;
+  background-color: transparent;
+  color: white;
+}
+#loginButton{
+  font-size: 24px;
+  background: none;
+  border: 3.5px solid rgb(4, 139, 201);
+  color:white;
+  font-weight: bolder;
+  font-family: monospace;
+  padding: 5px 10px;
+  margin: 20px 10px;
+  border-radius: 10px;
+  transition: 200ms;
+}
+
+#loginButton:hover{
+  background: rgb(4, 139, 201);
+}
+
+.loginInput::placeholder{
+  color: white;
+}
+
 /* AddNote.js */
 .form{
   display: flex;
@@ -34,9 +112,15 @@ html{
   display: flex;
   justify-content: space-around; 
   text-align: center;
-  align-items: left;
+  align-items: center;
+}
+#tooltip{
+  color: red;
+  text-align: center;
+  
 }
 .btn{
+  width: 10vw;
   margin-top: 20px;
   background-color: #FF5200;
   color: white;
@@ -151,4 +235,10 @@ html{
   background: rgb(77, 158, 252);
   border-color: rgb(0, 17, 255);
   border-style: solid;
+}
+/* #addNoteBtn:disabled:hover{
+  
+} */
+button:disabled{
+  background-color: #ffaa83;
 }

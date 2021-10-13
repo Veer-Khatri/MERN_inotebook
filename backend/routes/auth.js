@@ -17,6 +17,7 @@ router.post("/createuser", [
 
 ], async (requestt, responsee) => {
     // returning errors if there are
+    let success = false;
     const errors = validationResult(requestt);
     if (!errors.isEmpty()) {
         return responsee.status(400).json({ errors: errors.array() });
@@ -26,7 +27,8 @@ router.post("/createuser", [
     try {
         let user = await User.findOne({ "email": requestt.body.email })
         if (user) {
-            return responsee.status(400).json({ error: "sorry user with this email already exits" })
+            
+            return responsee.status(400).json({success, error: "sorry user with this email already exits" })
         }
         const salt = await bcrypt.genSalt(10);
         let SecurePassword = await bcrypt.hash(requestt.body.password, salt)
@@ -41,12 +43,14 @@ router.post("/createuser", [
             }
         }
         const authToken = jwt.sign(data, JWT_Secret)
-        responsee.json({ authToken })
+        success=true;
+        responsee.json({success, authToken })
         // .then(user => responsee.json(user))
         // .catch(err=> {console.log(err);
         // responsee.json({"error":"This email is registered please enter a unique email"})})
     } catch (error) {
         console.error(error.message);
+        responsee.json({success})
         responsee.status(500).send("some error occured please try after some time")
     }
 })
@@ -63,6 +67,7 @@ router.post("/userLogin", [
     body('password', "password must contain 10 characters").isLength({ min: 10 }),
 
 ], async (requestt, responsee) => {
+    let success = false;
     // returning errors if there are
     const errors = validationResult(requestt);
     if (!errors.isEmpty()) {
@@ -75,12 +80,14 @@ router.post("/userLogin", [
 
 
         if (!user) {
-            return responsee.status(400).json({ error: "Please enter to login with correct credentials" })
+            success = false;
+            return responsee.status(400).json({ success, error: "Please enter to login with correct credentials" })
         }
 
         const passwordCompare = await bcrypt.compare(password, user.password);
         if (!passwordCompare) {
-            return responsee.status(400).json({ error: "Please try to login with correct credentials pass compare" })
+            success = false;
+            return responsee.status(400).json({success, error: "Please try to login with correct credentials pass compare" })
         }
         const data = {
             user: {
@@ -88,7 +95,8 @@ router.post("/userLogin", [
             }
         }
         const authToken = jwt.sign(data, JWT_Secret)
-        responsee.json({ authToken })
+        success=true;
+        responsee.json({ success,authToken })
     } catch (error) {
         console.error(error.message);
         responsee.status(500).send("internal server error")

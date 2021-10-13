@@ -22,6 +22,10 @@ function Navbar() {
                     <Link id="contactBTN" className="links" to='/contact'>Contact Us</Link>
                     <Link id="notesBTN" className="links" to='/notes'>View Notes</Link>
                 </div>
+                <div id="login_signup_div" className="login_signup_div">
+                    <Link className="login_signup"  to="/signup" id="signup">SignUp</Link>
+                    <Link className="login_signup" to="/login" id="login">Login</Link>
+                </div>
 
 
                 <div id="searchBox">

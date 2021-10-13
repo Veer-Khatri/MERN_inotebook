@@ -33,10 +33,10 @@ function UserNotes() {
         setnote({id:CurrentNote._id,Etitle:CurrentNote.title, Edescription:CurrentNote.description , Etag:CurrentNote.tag})
         let updationForm = document.getElementById("updationForm");
         if (updationForm.style.display === "none") {
-            console.log(" in if ");
+            
             updationForm.style.display = "flex"
         } else {
-            console.log(" in else ");
+            
             updationForm.style.display = "none"
         }
 
@@ -61,6 +61,7 @@ function UserNotes() {
 
             </div>
             <div className="notesCollection">
+                {notes.length === 0 && "No notes to display"}
                 {notes.map((note) => { //Map is a collection of elements where each element is stored as a Key, value pair
                     return <NoteItem key={note._id} updateNote={updateNote} note={note} />
                 })}

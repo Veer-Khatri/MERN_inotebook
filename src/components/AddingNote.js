@@ -2,6 +2,16 @@ import React, { useContext, useState } from 'react'
 import NoteContext from '../context/notes/NoteContext';
 
 const AddingNote = () => {
+    setTimeout(() => {
+        if (document.getElementById("addNoteBtn").disabled === true) {
+            document.getElementById("tooltip").style.display = "block"
+        }
+        else {
+            document.getElementById("tooltip").style.display = "none"
+
+        }
+
+    }, 100);
 
     const context = useContext(NoteContext)
     const { AddNote } = context;
@@ -15,7 +25,9 @@ const AddingNote = () => {
         document.getElementById("title").value = ""
         document.getElementById("description").value = ""
         document.getElementById("tag").value = ""
+        setnote({ title: "", description: "", tag: "" })
     }
+
     return (
         <form action="POST" className="form">
             <h2>Enter Title of your note</h2>
@@ -25,7 +37,8 @@ const AddingNote = () => {
             <h2>Enter Tag of your note</h2>
             <input type="text" id="tag" name="tag" placeholder="Enter Tag" onChange={onChange} />
             <div className="btncontainer">
-                <button id="addNoteBtn" type="button" onClick={HandelClick} className="btn">Add Note</button>
+                <div id="tooltip">Title and Description contain atleast 5 characters</div>
+                <button disabled={note.title.length < 5 || note.description.length < 5} id="addNoteBtn" type="button" onClick={HandelClick} className="btn">Add Note</button>
 
             </div>
         </form>
