@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { useHistory } from 'react-router';
 import NoteContext from '../context/notes/NoteContext';
 import NoteItem from './NoteItem';
 
@@ -8,7 +9,7 @@ function UserNotes(props) {
     const context = useContext(NoteContext)
     const { notes, GetNotes, EditNote } = context;
     const [note, setnote] = useState({ id:"", Etitle: "", Edescription: "", Etag: "" })
-    
+    let history = useHistory();
     
     const onChange = (eventObj) => {
         setnote({ ...note, [eventObj.target.name]: eventObj.target.value })
@@ -25,7 +26,13 @@ function UserNotes(props) {
 
     }
     useEffect(() => {
-        GetNotes();
+        if (localStorage.getItem("token") && localStorage.getItem("token") !== undefined) {
+            GetNotes();
+        }
+        else{
+            history.push("/login")
+        }
+        // GetNotes();
         // eslint-disable-next-line
     }, [])
 

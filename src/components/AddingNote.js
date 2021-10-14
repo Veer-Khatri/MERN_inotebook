@@ -20,6 +20,7 @@ const AddingNote = (props) => {
         setnote({ ...note, [eventObj.target.name]: eventObj.target.value })
     }
     const HandelClick = (eventObj) => {
+        
         eventObj.preventDefault();
         AddNote(note.title, note.description, note.tag)
         document.getElementById("title").value = ""
@@ -40,7 +41,6 @@ const AddingNote = (props) => {
             <div className="btncontainer">
                 <div id="tooltip">Title and Description contain atleast 5 characters</div>
                 <button disabled={note.title.length < 5 || note.description.length < 5} id="addNoteBtn" type="button" onClick={HandelClick} className="btn">Add Note</button>
-
             </div>
         </form>
 

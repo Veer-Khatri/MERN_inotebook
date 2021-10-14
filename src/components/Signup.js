@@ -57,7 +57,7 @@ const Signup = (props) => {
                 <input className="loginInput" type="password" name="Confirmpassword" value={creditionals.Confirmpassword} onChange={onChange} id="Confirmpassword" placeholder="Confirm password" />
             </div>
 
-            <button id="loginButton" >Signup</button>
+            <button className="loginButton">Signup</button>
 
         </form>
     )

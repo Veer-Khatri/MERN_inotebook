@@ -61,7 +61,7 @@ button{
   background-color: transparent;
   color: white;
 }
-#loginButton{
+.loginButton{
   font-size: 24px;
   background: none;
   border: 3.5px solid rgb(4, 139, 201);

@@ -25,7 +25,8 @@ const Login = (props) => {
         console.log(json);
         if(json.success){
             // Save the auth tokenand redirect
-            localStorage.setItem("token",json.authtoken) // saving token in local storage 
+            console.log(json.authToken);
+            localStorage.setItem("token",json.authToken) // saving token in local storage 
             props.showAlert("Logedin Successfully ","Success")
             history.push('/')
 
@@ -40,7 +41,7 @@ const Login = (props) => {
             <form action="POST" onSubmit={handelSubmit} id="LoginForm" className="form">
                 <input className="loginInput" type="text" name="email" value={creditionals.email} onChange={onChange} id="email"  placeholder="Enter Your Email Here" />
                 <input type="password" name="password" id="password" value={creditionals.password} onChange={onChange} className="loginInput" placeholder="Enter Your Password Here" />
-                <button id="loginButton" >Login</button>
+                <button className="loginButton" >Login</button>
 
             </form>
         </>

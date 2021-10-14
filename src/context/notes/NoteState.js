@@ -13,18 +13,22 @@ const NoteState = (props) => {
     // Get all Notes
     const GetNotes = async () => {
         //  API CALL
-        let url = `${Host}/api/notes/fetchnotes`
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE0ZWQ3MmYzNGQ0OTI3YWE4OTk4MGM4In0sImlhdCI6MTYzMjU1NzEwNn0.cqmXQyTMpYrOpu4N8C5PldTZi1haykOdZ51CzWHBREw'
-            }
+        try {
+            console.log(localStorage.getItem("token"));
+            let url = `${Host}/api/notes/fetchnotes`
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'auth-token': localStorage.getItem("token")
+                }
 
-        });
-        const json = await response.json()
-        setnotes(json)
-
+            });
+            const json = await response.json()
+            setnotes(json)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     // Add note Func
@@ -35,7 +39,7 @@ const NoteState = (props) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE0ZWQ3MmYzNGQ0OTI3YWE4OTk4MGM4In0sImlhdCI6MTYzMjU1NzEwNn0.cqmXQyTMpYrOpu4N8C5PldTZi1haykOdZ51CzWHBREw'
+                'auth-token': localStorage.getItem("token")
             },
             body: JSON.stringify({ title, description, tag }) // body data type must match "Content-Type" header
         });
@@ -65,15 +69,15 @@ const NoteState = (props) => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE0ZWQ3MmYzNGQ0OTI3YWE4OTk4MGM4In0sImlhdCI6MTYzMjU1NzEwNn0.cqmXQyTMpYrOpu4N8C5PldTZi1haykOdZ51CzWHBREw'
+                'auth-token': localStorage.getItem("token")
             },
 
         });
-            // const json = await response.json()
-            // console.log(json);
-        
+        // const json = await response.json()
+        // console.log(json);
+
         console.log("deleting the node : id ", id);
-        const newNotes = notes.filter((note) =>{ return note._id !== id})
+        const newNotes = notes.filter((note) => { return note._id !== id })
         setnotes(newNotes)
 
 
@@ -81,16 +85,16 @@ const NoteState = (props) => {
 
 
     // Edit note Func
-    const EditNote = async (id ,title,description,tag) => {
+    const EditNote = async (id, title, description, tag) => {
         // API CALL
         let url = `${Host}/api/notes/updatenote/${id}`
         const response = await fetch(url, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE0ZWQ3MmYzNGQ0OTI3YWE4OTk4MGM4In0sImlhdCI6MTYzMjU1NzEwNn0.cqmXQyTMpYrOpu4N8C5PldTZi1haykOdZ51CzWHBREw'
+                'auth-token': localStorage.getItem("token")
             },
-            body: JSON.stringify({title,description,tag}) // body data type must match "Content-Type" header
+            body: JSON.stringify({ title, description, tag }) // body data type must match "Content-Type" header
         });
         const json = response.json()
         console.log(json);
@@ -98,7 +102,7 @@ const NoteState = (props) => {
         // Logic to edit in clint 
         for (let i = 0; i < newNotes.length; i++) {
             const element = newNotes[i];
-            console.log(element ,element._id);
+            console.log(element, element._id);
             console.log("hello ji");
             if (element._id === id) {
                 newNotes[i].title = title;

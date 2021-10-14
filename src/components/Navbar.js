@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { useHistory } from 'react-router'
 import logo from "../assets/Inotebook.png"
 import "./Navbar.css"
 
@@ -8,6 +9,7 @@ function Navbar() {
     useEffect(() => {
 
     }, [location])
+    let history = useHistory()
     return (
         <>
             <nav id='nav'>
@@ -22,10 +24,12 @@ function Navbar() {
                     <Link id="contactBTN" className="links" to='/contact'>Contact Us</Link>
                     <Link id="notesBTN" className="links" to='/notes'>View Notes</Link>
                 </div>
-                <div id="login_signup_div" className="login_signup_div">
-                    <Link className="login_signup"  to="/signup" id="signup">SignUp</Link>
-                    <Link className="login_signup" to="/login" id="login">Login</Link>
-                </div>
+                {
+                    !localStorage.getItem("token") && localStorage.getItem("token")!==undefined ? <div id="login_signup_div" className="login_signup_div">
+                        <Link className="login_signup" to="/signup" id="signup">SignUp</Link>
+                        <Link className="login_signup" to="/login" id="login">Login</Link>
+                    </div> : <button className="login_signup" onClick={() => { localStorage.removeItem("token"); history.push("/login") }}>Log out</button>
+                }
 
 
                 <div id="searchBox">
